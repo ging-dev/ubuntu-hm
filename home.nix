@@ -21,6 +21,8 @@
     nixd
     nixfmt
     devenv
+    # For development environment
+    uv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -55,7 +57,7 @@
   #  /etc/profiles/per-user/gingdev/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    PHP_CLI_SERVER_WORKERS = "4";
+    PHP_CLI_SERVER_WORKERS = "8";
   };
 
   # Let Home Manager install and manage itself.
@@ -63,6 +65,15 @@
     home-manager.enable = true;
     direnv.enable = true;
     starship.enable = true;
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "ging-dev";
+          email = "thanh1101dev@gmail.com";
+        };
+      };
+    };
 
     fish = {
       enable = true;
