@@ -22,8 +22,26 @@
     nixfmt
     devenv
     # For development environment
+
+    # PHP
+    (pkgs.php.buildEnv {
+      extensions = (
+        { enabled, all }:
+        enabled
+        ++ (with all; [
+          xdebug
+        ])
+      );
+      extraConfig = ''
+        xdebug.mode=debug
+      '';
+    })
+
+    # Nodejs
     nodejs
     pnpm
+
+    # Python
     uv
   ];
 
