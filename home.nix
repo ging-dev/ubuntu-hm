@@ -22,6 +22,8 @@
     nixfmt
     devenv
     # For development environment
+    nodejs
+    pnpm
     uv
   ];
 
@@ -57,6 +59,7 @@
   #  /etc/profiles/per-user/gingdev/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    EDITOR = "nano";
     PHP_CLI_SERVER_WORKERS = "8";
   };
 
