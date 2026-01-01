@@ -1,5 +1,18 @@
 { config, pkgs, ... }:
-
+let
+  php = pkgs.php.buildEnv {
+    extensions = (
+      { enabled, all }:
+      enabled
+      ++ (with all; [
+        xdebug
+      ])
+    );
+    extraConfig = ''
+      xdebug.mode=debug
+    '';
+  };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,18 +37,8 @@
     # For development environment
 
     # PHP
-    (pkgs.php.buildEnv {
-      extensions = (
-        { enabled, all }:
-        enabled
-        ++ (with all; [
-          xdebug
-        ])
-      );
-      extraConfig = ''
-        xdebug.mode=debug
-      '';
-    })
+    php
+    php.packages.composer
     symfony-cli
 
     # Nodejs
