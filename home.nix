@@ -36,6 +36,7 @@
         xdebug.mode=debug
       '';
     })
+    symfony-cli
 
     # Nodejs
     nodejs
