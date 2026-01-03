@@ -1,19 +1,29 @@
 { config, pkgs, ... }:
-let
-  php = pkgs.php.buildEnv {
-    extensions = (
-      { enabled, all }:
-      enabled
-      ++ (with all; [
-        xdebug
-      ])
-    );
-    extraConfig = ''
-      xdebug.mode=debug
-    '';
-  };
-in
 {
+  # Overlays
+  nixpkgs.overlays = [
+    (self: super: {
+      php = super.php.buildEnv {
+        extensions = (
+          { enabled, all }:
+          enabled
+          ++ (with all; [
+            xdebug
+          ])
+        );
+        extraConfig = ''
+          xdebug.mode=debug
+        '';
+      };
+      wp-cli = super.wp-cli.override {
+        phpIniFile = (super.formats.ini { }).generate "wp-cli.ini" {
+          PHP.memory_limit = -1;
+          Phar."phar.readonly" = "Off";
+        };
+      };
+    })
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "gingdev";
@@ -40,6 +50,7 @@ in
     php
     php.packages.composer
     symfony-cli
+    wp-cli
 
     # Nodejs
     nodejs
