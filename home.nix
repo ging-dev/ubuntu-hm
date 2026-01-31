@@ -1,26 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
+    ./packages.nix
     ./programs.nix
-  ];
-  home.packages = with pkgs; [
-    nixd
-    nixfmt
-    devenv
-    # For development environment
-
-    # PHP
-    php
-    php.packages.composer
-    symfony-cli
-    wp-cli
-
-    # Nodejs
-    nodejs
-    pnpm
-
-    # Python
-    uv
+    ./services.nix
   ];
 
   home.username = "gingdev";
