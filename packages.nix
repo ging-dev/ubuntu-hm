@@ -18,5 +18,8 @@
 
     # Python
     uv
+
+    # K8s
+    minikube
   ];
 }
