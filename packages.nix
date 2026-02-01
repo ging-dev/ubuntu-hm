@@ -21,5 +21,6 @@
 
     # K8s
     minikube
+    kubectl
   ];
 }
