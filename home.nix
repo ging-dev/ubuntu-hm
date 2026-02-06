@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./packages.nix
@@ -12,5 +12,10 @@
   home.sessionVariables = {
     EDITOR = "nano";
     PHP_CLI_SERVER_WORKERS = "8";
+  };
+
+  services.podman = {
+    enable = true;
+    package = pkgs.podman;
   };
 }
