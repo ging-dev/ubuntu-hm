@@ -13,10 +13,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.sessionVariables = {
+      KUBECONFIG = "$HOME/.kube/k3s.yaml";
+    };
+
     home.packages = with pkgs; [
       slirp4netns
       fuse-overlayfs
       k3s
+      kubernetes-helm
     ];
 
     systemd.user.services.k3s = {

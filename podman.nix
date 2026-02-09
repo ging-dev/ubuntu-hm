@@ -9,6 +9,11 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
+    home.sessionVariables = {
+      DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
+      DOCKER_SOCK = "$XDG_RUNTIME_DIR/podman/podman.sock";
+    };
+
     systemd.user.sockets = {
       podman = {
         Unit = {

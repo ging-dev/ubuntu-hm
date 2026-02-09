@@ -3,7 +3,7 @@
   imports = [
     ./packages.nix
     ./programs.nix
-    ./services.nix
+    ./podman.nix
     ./k3s.nix
   ];
 
@@ -13,8 +13,6 @@
   home.sessionVariables = {
     EDITOR = "nano";
     PHP_CLI_SERVER_WORKERS = "8";
-    DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/podman/podman.sock";
-    DOCKER_SOCK = "$XDG_RUNTIME_DIR/podman/podman.sock";
   };
 
   services.podman = {
