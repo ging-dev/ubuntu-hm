@@ -1,10 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    nh
     nixd
     nixfmt
-    devenv
-    # For development environment
 
     # PHP
     php
@@ -18,9 +17,5 @@
 
     # Python
     uv
-
-    # K8s
-    minikube
-    kubectl
   ];
 }

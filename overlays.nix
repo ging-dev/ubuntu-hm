@@ -17,4 +17,10 @@ self: super: {
       Phar."phar.readonly" = "Off";
     };
   };
+
+  k3s = super.k3s.overrideAttrs (finalAttrs: previousAttrs: {
+    k3sRuntimeDeps = builtins.filter
+      (pkg: (super.lib.getName pkg) != "shadow") 
+      previousAttrs.k3sRuntimeDeps;
+  });
 }
