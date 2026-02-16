@@ -17,5 +17,8 @@
 
     # Python
     uv
+
+    # Nix vms
+    nixos-shell
   ];
 }
