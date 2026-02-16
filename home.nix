@@ -20,5 +20,5 @@
     package = pkgs.podman;
   };
 
-  services.k3s.enable = true;
+  services.k3s.enable = false;
 }
