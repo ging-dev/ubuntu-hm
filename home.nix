@@ -16,7 +16,7 @@
   };
 
   services.podman = {
-    enable = true;
+    enable = false;
     package = pkgs.podman;
   };
 
