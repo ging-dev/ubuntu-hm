@@ -14,6 +14,7 @@
     # Nodejs
     nodejs
     pnpm
+    railway
 
     # Python
     uv
