@@ -18,6 +18,9 @@
       enable = true;
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
+        set -gx PATH $PATH $HOME/.local/bin
+        set -gx PNPM_HOME $HOME/.local/bin
+        set -gx PATH $PATH (composer global config bin-dir --absolute --quiet)
       '';
     };
   };
